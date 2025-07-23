@@ -1,0 +1,220 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #f0f4f8;
+    --background-color: #e9ecef;
+    --text-color: #333;
+    --user-msg-bg: #007bff;
+    --assistant-msg-bg: #ffffff;
+    --font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #506fae;;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--text-color);
+}
+
+.chat-container {
+    width: 90%;
+    max-width: 600px;
+    height: 90vh;
+    max-height: 800px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* MODIFIED: Flexbox for alignment */
+.chat-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* NEW: Style for the text wrapper */
+.header-text h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+/* NEW: Style for the text wrapper */
+.header-text p {
+    margin: 5px 0 0;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* NEW: Styles for the reset button */
+#reset-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#reset-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#reset-button svg {
+    width: 22px;
+    height: 22px;
+}
+
+.chat-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #605aae;;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+}
+
+.message {
+    max-width: 80%;
+    margin-bottom: 15px;
+    padding: 12px 18px;
+    border-radius: 20px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: var(--user-msg-bg);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.assistant-message {
+    background-color: var(--assistant-msg-bg);
+    color: var(--text-color);
+    align-self: flex-start;
+    border: 1px solid #e0e0e0;
+    border-bottom-left-radius: 5px;
+}
+
+.message p { margin: 0; }
+.message b { color: var(--primary-color); }
+
+.chat-input-area {
+    padding: 15px 20px;
+    background: var(--primary-color);
+    border-top: 1px solid #ddd;
+}
+
+.message-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#user-input {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+#user-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+#send-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+.typing-indicator {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+}
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    margin: 0 2px;
+    background-color: #aaa;
+    border-radius: 50%;
+    display: inline-block;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+.typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+.typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1.0); }
+}
+
+
+/* --- NEW Styles for Problem Selection --- */
+.problem-selection-container {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 5px;
+    max-width: 85%;
+}
+.problem-choice-button {
+    background-color: #fff;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+.problem-choice-button:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.problem-choice-button:disabled {
+    background-color: #e9ecef;
+    color: #999;
+    border-color: #ccc;
+    cursor: not-allowed;
+}

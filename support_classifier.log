@@ -1,0 +1,399 @@
+2025-07-23 06:39:55,311 - app - INFO - Received chat request: {'type': 'text', 'message': 'hlo'}
+2025-07-23 06:39:55,350 - groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-3b3aded0-5c50-497a-b452-078041c7643b', 'json_data': {'messages': [{'role': 'system', 'content': 'You are a technical support intent classifier. Determine if the user is:\n            A) Describing a technical PROBLEM (needs classification)\n            B) Requesting step-by-step GUIDANCE for a procedure\n            C) Asking something ambiguous (needs clarification) than treat it as a problem and return problem in query_type\n\n            **PROCEDURAL REQUEST INDICATORS:**\n            - "how to", "step by step", "guide me", "show me", "procedure for", "instructions for"\n            - Asking for instructions rather than describing symptoms\n            - Imperative forms: "tell me...", "explain..."\n\n            **PROBLEM REPORT INDICATORS:**\n            - Describes symptoms (crashes, errors, slowness, failures)\n            - Uses words like: "problem", "issue", "not working", "broken", "error"\n            - Reports unexpected behavior\n\n            **RESPONSE FORMAT:**\n            {\n                "query_type": "problem" | "guidance" ,\n                "procedure_name": "procedure name if guidance"| "NULL name if problem",\n                "original_message": "user input message"\n            }'}, {'role': 'user', 'content': 'User message: hlo'}], 'model': 'llama3-70b-8192', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.1}}
+2025-07-23 06:39:55,359 - groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-07-23 06:39:55,360 - httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+2025-07-23 06:39:55,411 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7faf2cd4e490>
+2025-07-23 06:39:55,411 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7faf2d7945f0> server_hostname='api.groq.com' timeout=None
+2025-07-23 06:39:55,423 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7faf2cd4ff90>
+2025-07-23 06:39:55,423 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-07-23 06:39:55,424 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-07-23 06:39:55,424 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-07-23 06:39:55,424 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-07-23 06:39:55,424 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-07-23 06:39:55,457 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Wed, 23 Jul 2025 06:39:55 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'96'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'vary', b'Origin'), (b'x-groq-region', b'us-west-1'), (b'x-request-id', b'req_01k0v0551rfxcv7z8gfj9vr5h8'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=8Kc3GyrM6Bb8HvqscEUYJSrAomiXEyVsnWj8jX5O_TI-1753252795-1.0.1.1-qUM6XXnU4k2wECKjfNPg4idnl6Ie1Mrptq7kZp_I267Vek.KLHvSXhx7aIcYlXgAhwnbMEnp.Dz34ZDL6tMcLmlV1KlSo59Vj3P2myoHacw; path=/; expires=Wed, 23-Jul-25 07:09:55 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'96392ef36dd9c87c-SEA'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-07-23 06:39:55,458 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-23 06:39:55,459 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-07-23 06:39:55,459 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-07-23 06:39:55,459 - httpcore.http11 - DEBUG - response_closed.started
+2025-07-23 06:39:55,459 - httpcore.http11 - DEBUG - response_closed.complete
+2025-07-23 06:39:55,459 - groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "401 Unauthorized" Headers({'date': 'Wed, 23 Jul 2025 06:39:55 GMT', 'content-type': 'application/json', 'content-length': '96', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin', 'x-groq-region': 'us-west-1', 'x-request-id': 'req_01k0v0551rfxcv7z8gfj9vr5h8', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=8Kc3GyrM6Bb8HvqscEUYJSrAomiXEyVsnWj8jX5O_TI-1753252795-1.0.1.1-qUM6XXnU4k2wECKjfNPg4idnl6Ie1Mrptq7kZp_I267Vek.KLHvSXhx7aIcYlXgAhwnbMEnp.Dz34ZDL6tMcLmlV1KlSo59Vj3P2myoHacw; path=/; expires=Wed, 23-Jul-25 07:09:55 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None', 'server': 'cloudflare', 'cf-ray': '96392ef36dd9c87c-SEA', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-07-23 06:39:55,460 - groq._base_client - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/groq/_base_client.py", line 1014, in request
+    response.raise_for_status()
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-07-23 06:39:55,461 - groq._base_client - DEBUG - Not retrying
+2025-07-23 06:39:55,461 - groq._base_client - DEBUG - Re-raising status error
+2025-07-23 06:39:55,462 - app - ERROR - Error in request type detection: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-23 06:39:55,462 - app - DEBUG - Processing problem report: hlo
+2025-07-23 06:39:55,462 - app - DEBUG - Current state - awaiting_clarification: False
+2025-07-23 06:39:55,466 - groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-18eb6b9c-1042-4f1c-a99a-97f66a39dbe7', 'json_data': {'messages': [{'role': 'system', 'content': '\n            You are an expert in identifying no of problem in user input. Your task is to systematically separate multiple distinct technical problems from user messages.\n\n            **PROBLEM IDENTIFICATION :**\n            1. Count and separate clearly distinct issues affecting different systems, applications, or components.\n            2. Only separate if two or more issues have different root causes or contexts.\n            4. Separate only if Clearly Distinct: Separate problems only if they affect unrelated systems (e.g., "my printer is jammed and I can\'t access my email") or have clearly different symptoms and contexts.\n            5. If the user input clearly describes _one_ symptom (e.g. "my pc is slow", "printer won\'t print"), assume _one_ problem and do NOT ask any clarification question about that symptom.\n\n            **RULES**\n            1. Do NOT ask about the nature or details of a symptom — your job is ONLY to determine number of distinct problems, not to analyze what the problem is.\n            2. Treat simple, single-clause inputs (like "my pc not working", "email not opening", "printer is jammed") as a single, clearly defined problem. Do NOT request clarification in such cases.\n            3. Consolidate Symptoms: If one symptom is clearly a result of another (e.g. "The app crashes and I lose my work"), treat as a single problem.\n            4. Separate problems ONLY if they are clearly about different systems, components, or times (e.g., "My printer won\'t print AND my email won\'t open").\n            5. Ask for clarification *only* when you cannot determine if the described situation involves 1 or multiple issues — e.g., if the syntax is ambiguous or two clauses blur together.\n            6. Never ask for clarification based just on lack of technical detail in a single clause — this is out of scope.\n\n            If need to clarify, set "needs_clarification": true, leave "problems" empty, and provide a targeted question in "clarification_question". Otherwise, set "needs_clarification": false and proceed.\n\n            **ENHANCED RESPONSE FORMAT:**\n            {\n                "has_multiple_problems": true/false,\n                "needs_clarification": true/false,\n                "clarification_question": "A single, targeted question to resolve ambiguity." OR null,\n                "problems": [\n                    {\n                        "problem_text": "A clear, specific, and consolidated problem description.",\n                        "context": "All relevant context, symptoms, and conditions.",\n                        "problem_id": "problem_1/2/...",\n                        "current_user_message": "The part of the original message describing this consolidated problem."\n                    }\n                ],\n                "separation_reasoning": "A clear explanation of why problems were either separated or consolidated into one.",\n                "original_message": "The full original user message."\n            }\n            '}, {'role': 'user', 'content': 'User message: hlo\nConversation history: user: hlo'}], 'model': 'gemma2-9b-it', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.1}}
+2025-07-23 06:39:55,466 - groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-07-23 06:39:55,467 - httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+2025-07-23 06:39:55,504 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7faf2cda6690>
+2025-07-23 06:39:55,505 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7faf2d796720> server_hostname='api.groq.com' timeout=None
+2025-07-23 06:39:55,518 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7faf2cda6750>
+2025-07-23 06:39:55,518 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-07-23 06:39:55,519 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-07-23 06:39:55,519 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-07-23 06:39:55,519 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-07-23 06:39:55,519 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-07-23 06:39:55,552 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Wed, 23 Jul 2025 06:39:55 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'96'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'vary', b'Origin'), (b'x-groq-region', b'us-west-1'), (b'x-request-id', b'req_01k0v0554pfxcrjckyx42phqds'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=ZvNCsrLiv.uJMyYCvLYnL.TIj7TKVgAMZm63B6aw4r0-1753252795-1.0.1.1-yiv7YByuuK6NhbUU2wrZ1qbhsqRgWXNR9nvsrvOYJrqWrbYlkcGx9yMcuc0ue7mmpQrCMrrR1OmHvx2x96f5BeWdkm0cLX2JpcO3nuO_440; path=/; expires=Wed, 23-Jul-25 07:09:55 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'96392ef409b057bc-SEA'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-07-23 06:39:55,552 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-23 06:39:55,553 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-07-23 06:39:55,553 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-07-23 06:39:55,553 - httpcore.http11 - DEBUG - response_closed.started
+2025-07-23 06:39:55,553 - httpcore.http11 - DEBUG - response_closed.complete
+2025-07-23 06:39:55,553 - groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "401 Unauthorized" Headers({'date': 'Wed, 23 Jul 2025 06:39:55 GMT', 'content-type': 'application/json', 'content-length': '96', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin', 'x-groq-region': 'us-west-1', 'x-request-id': 'req_01k0v0554pfxcrjckyx42phqds', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=ZvNCsrLiv.uJMyYCvLYnL.TIj7TKVgAMZm63B6aw4r0-1753252795-1.0.1.1-yiv7YByuuK6NhbUU2wrZ1qbhsqRgWXNR9nvsrvOYJrqWrbYlkcGx9yMcuc0ue7mmpQrCMrrR1OmHvx2x96f5BeWdkm0cLX2JpcO3nuO_440; path=/; expires=Wed, 23-Jul-25 07:09:55 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None', 'server': 'cloudflare', 'cf-ray': '96392ef409b057bc-SEA', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-07-23 06:39:55,553 - groq._base_client - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/groq/_base_client.py", line 1014, in request
+    response.raise_for_status()
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-07-23 06:39:55,554 - groq._base_client - DEBUG - Not retrying
+2025-07-23 06:39:55,554 - groq._base_client - DEBUG - Re-raising status error
+2025-07-23 06:39:55,554 - app - ERROR - Error in problem detection: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-23 06:39:55,558 - groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-834e8400-3b53-4f9e-8ada-c3b8d19cbc74', 'json_data': {'messages': [{'role': 'system', 'content': 'You are an expert technical support classifier. Analyze user messages and classify them into these categories:\n\n            1. **Hardware** - Physical device problems (screen, battery, keyboard, ports, overheating, won\'t turn on, fell and broke, physical damage)\n            2. **Software/OS** - Operating system, boot, driver, update issues (won\'t boot, Windows update failed, driver missing, system-wide software issues)\n            3. **Performance** - System or app slowness, resource usage, apps running slowly or poorly (computer slow, startup takes forever, app is slow, not responding well)\n            4. **App Crash** - Application crashes, freezes, error dialogs, won\'t start (specific app crashes, program hangs, error messages)\n            5. **System Crash** - System-wide crashes, BSOD, random reboots (blue screen, system freezes, computer shuts down)\n\n            **DIAGNOSTIC APPROACH:**\n            You must distinguish between:\n            - **Surface symptoms** vs **root causes**\n            - **App-specific** vs **system-wide** issues\n            - **Hardware** vs **software** problems\n            - **Performance slowness** vs **crash issues**\n\n            CRITICAL UNDERSTANDING:\n            - "App not working" could mean: Performance (slow/laggy), App Crash (won\'t start/crashes), or Software/OS (system-wide issue)\n            - "Computer won\'t start" could mean: Hardware (power/physical) OR Software/OS (boot failure)\n            - "Slow" typically means Performance, but could be Hardware (failing components) or Software/OS (malware/corruption)\n            - Only classify as "App Crash" if user mentions crashing, freezing, error messages, or won\'t start\n            - "Not working properly" often indicates Performance issues unless crash symptoms are described\n\n            ANALYSIS APPROACH:\n            1. Consider ALL possible interpretations of vague language\n            2. Ask targeted questions to distinguish between similar categories\n            3. Don\'t assume "not working" means "crashing" - could be performance\n            4. Use precise diagnostic questions based on symptoms\n\n            Respond with JSON in this exact format:\n            {\n                "classification": "final_category_or_null", \n                "confidence": 0.0_to_1.0,\n                "reasoning": "internal_step_by_step_analysis",\n                "need_question": true_or_false,\n                "question": "targeted_diagnostic_question_if_needed"\n            }\n\n            Decision Logic:\n            - If CLEARLY only 1 category possible (high confidence): Classify immediately\n            - If multiple interpretations possible: Set needs_question=true and ask to differentiate\n            - Focus on what the user ACTUALLY said, not assumptions about what they meant'}, {'role': 'user', 'content': 'Problem to classify: hlo\n Conversation: user: hlo'}], 'model': 'llama3-70b-8192', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.1}}
+2025-07-23 06:39:55,559 - groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-07-23 06:39:55,559 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-07-23 06:39:55,560 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-07-23 06:39:55,560 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-07-23 06:39:55,560 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-07-23 06:39:55,560 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-07-23 06:39:55,589 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Wed, 23 Jul 2025 06:39:55 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'96'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'vary', b'Origin'), (b'x-groq-region', b'us-west-1'), (b'x-request-id', b'req_01k0v0555ve1z9zwj3b2dk5qq1'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'CF-RAY', b'96392ef44e1ec87c-SEA'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-07-23 06:39:55,589 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-23 06:39:55,589 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-07-23 06:39:55,590 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-07-23 06:39:55,590 - httpcore.http11 - DEBUG - response_closed.started
+2025-07-23 06:39:55,590 - httpcore.http11 - DEBUG - response_closed.complete
+2025-07-23 06:39:55,590 - groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "401 Unauthorized" Headers({'date': 'Wed, 23 Jul 2025 06:39:55 GMT', 'content-type': 'application/json', 'content-length': '96', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin', 'x-groq-region': 'us-west-1', 'x-request-id': 'req_01k0v0555ve1z9zwj3b2dk5qq1', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'server': 'cloudflare', 'cf-ray': '96392ef44e1ec87c-SEA', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-07-23 06:39:55,590 - groq._base_client - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/groq/_base_client.py", line 1014, in request
+    response.raise_for_status()
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-07-23 06:39:55,591 - groq._base_client - DEBUG - Not retrying
+2025-07-23 06:39:55,591 - groq._base_client - DEBUG - Re-raising status error
+2025-07-23 06:39:55,591 - app - ERROR - Error in problem classification: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-23 06:39:55,592 - app - INFO - Sending response: {'type': 'final', 'content': "I've classified your issue as: **Unknown** (confidence: 50%)\n\nProblem details: hlo"}
+2025-07-23 06:42:21,985 - app - INFO - Received chat request: {'type': 'text', 'message': 'hlo'}
+2025-07-23 06:42:22,000 - groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-ae3a8052-6283-43c0-8614-9fbd0dbf00ad', 'json_data': {'messages': [{'role': 'system', 'content': 'You are a technical support intent classifier. Determine if the user is:\n            A) Describing a technical PROBLEM (needs classification)\n            B) Requesting step-by-step GUIDANCE for a procedure\n            C) Asking something ambiguous (needs clarification) than treat it as a problem and return problem in query_type\n\n            **PROCEDURAL REQUEST INDICATORS:**\n            - "how to", "step by step", "guide me", "show me", "procedure for", "instructions for"\n            - Asking for instructions rather than describing symptoms\n            - Imperative forms: "tell me...", "explain..."\n\n            **PROBLEM REPORT INDICATORS:**\n            - Describes symptoms (crashes, errors, slowness, failures)\n            - Uses words like: "problem", "issue", "not working", "broken", "error"\n            - Reports unexpected behavior\n\n            **RESPONSE FORMAT:**\n            {\n                "query_type": "problem" | "guidance" ,\n                "procedure_name": "procedure name if guidance"| "NULL name if problem",\n                "original_message": "user input message"\n            }'}, {'role': 'user', 'content': 'User message: hlo'}], 'model': 'llama3-70b-8192', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.1}}
+2025-07-23 06:42:22,006 - groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-07-23 06:42:22,006 - httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+2025-07-23 06:42:22,043 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f906129acd0>
+2025-07-23 06:42:22,043 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7f9061c7ee70> server_hostname='api.groq.com' timeout=None
+2025-07-23 06:42:22,058 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f906129ad90>
+2025-07-23 06:42:22,058 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-07-23 06:42:22,058 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-07-23 06:42:22,058 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-07-23 06:42:22,059 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-07-23 06:42:22,059 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-07-23 06:42:22,249 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Jul 2025 06:42:22 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'vary', b'Origin'), (b'x-groq-region', b'us-west-1'), (b'x-ratelimit-limit-requests', b'14400'), (b'x-ratelimit-limit-tokens', b'6000'), (b'x-ratelimit-remaining-requests', b'14399'), (b'x-ratelimit-remaining-tokens', b'5708'), (b'x-ratelimit-reset-requests', b'6s'), (b'x-ratelimit-reset-tokens', b'2.92s'), (b'x-request-id', b'req_01k0v09m7xfy4v8pf09rpnwdbr'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=Ou.PjLHKuvPWFBseMMKbuIl3kOqZwMYynWUSbGfssJA-1753252942-1.0.1.1-cR4zyKS57sqfAJJKNWpXj0UR249BwIC_OpWSH_MeYaYgXTAFLpLRzpJxR1DX7X_SaFEk3Z54s_sWZhyeeCv8bJ_8syOd1etyg0cp1lim2Cw; path=/; expires=Wed, 23-Jul-25 07:12:22 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'96393287ee9f30a6-SEA'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-07-23 06:42:22,251 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:42:22,251 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-07-23 06:42:22,252 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-07-23 06:42:22,252 - httpcore.http11 - DEBUG - response_closed.started
+2025-07-23 06:42:22,252 - httpcore.http11 - DEBUG - response_closed.complete
+2025-07-23 06:42:22,252 - groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Wed, 23 Jul 2025 06:42:22 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin', 'x-groq-region': 'us-west-1', 'x-ratelimit-limit-requests': '14400', 'x-ratelimit-limit-tokens': '6000', 'x-ratelimit-remaining-requests': '14399', 'x-ratelimit-remaining-tokens': '5708', 'x-ratelimit-reset-requests': '6s', 'x-ratelimit-reset-tokens': '2.92s', 'x-request-id': 'req_01k0v09m7xfy4v8pf09rpnwdbr', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=Ou.PjLHKuvPWFBseMMKbuIl3kOqZwMYynWUSbGfssJA-1753252942-1.0.1.1-cR4zyKS57sqfAJJKNWpXj0UR249BwIC_OpWSH_MeYaYgXTAFLpLRzpJxR1DX7X_SaFEk3Z54s_sWZhyeeCv8bJ_8syOd1etyg0cp1lim2Cw; path=/; expires=Wed, 23-Jul-25 07:12:22 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None', 'server': 'cloudflare', 'cf-ray': '96393287ee9f30a6-SEA', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-07-23 06:42:22,265 - app - INFO - Request type detection result: {'query_type': 'problem', 'procedure_name': 'NULL', 'original_message': 'hlo'}
+2025-07-23 06:42:22,266 - app - DEBUG - Processing problem report: hlo
+2025-07-23 06:42:22,272 - groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-2b7a87b0-74b8-44cd-88ed-c15307caa75e', 'json_data': {'messages': [{'role': 'system', 'content': '\n            You are an expert in identifying no of problem in user input. Your task is to systematically separate multiple distinct technical problems from user messages.\n\n            **PROBLEM IDENTIFICATION :**\n            1. Count and separate clearly distinct issues affecting different systems, applications, or components.\n            2. Only separate if two or more issues have different root causes or contexts.\n            4. Separate only if Clearly Distinct: Separate problems only if they affect unrelated systems (e.g., "my printer is jammed and I can\'t access my email") or have clearly different symptoms and contexts.\n            5. If the user input clearly describes _one_ symptom (e.g. "my pc is slow", "printer won\'t print"), assume _one_ problem and do NOT ask any clarification question about that symptom.\n\n            **RULES**\n            1. Do NOT ask about the nature or details of a symptom — your job is ONLY to determine number of distinct problems, not to analyze what the problem is.\n            2. Treat simple, single-clause inputs (like "my pc not working", "email not opening", "printer is jammed") as a single, clearly defined problem. Do NOT request clarification in such cases.\n            3. Consolidate Symptoms: If one symptom is clearly a result of another (e.g. "The app crashes and I lose my work"), treat as a single problem.\n            4. Separate problems ONLY if they are clearly about different systems, components, or times (e.g., "My printer won\'t print AND my email won\'t open").\n            5. Ask for clarification *only* when you cannot determine if the described situation involves 1 or multiple issues — e.g., if the syntax is ambiguous or two clauses blur together.\n            6. Never ask for clarification based just on lack of technical detail in a single clause — this is out of scope.\n\n            If need to clarify, set "needs_clarification": true, leave "problems" empty, and provide a targeted question in "clarification_question". Otherwise, set "needs_clarification": false and proceed.\n\n            **ENHANCED RESPONSE FORMAT:**\n            {\n                "has_multiple_problems": true/false,\n                "needs_clarification": true/false,\n                "clarification_question": "A single, targeted question to resolve ambiguity." OR null,\n                "problems": [\n                    {\n                        "problem_text": "A clear, specific, and consolidated problem description.",\n                        "context": "All relevant context, symptoms, and conditions.",\n                        "problem_id": "problem_1/2/...",\n                        "current_user_message": "The part of the original message describing this consolidated problem."\n                    }\n                ],\n                "separation_reasoning": "A clear explanation of why problems were either separated or consolidated into one.",\n                "original_message": "The full original user message."\n            }\n            '}, {'role': 'user', 'content': 'User message: hlo\nConversation history: user: hlo'}], 'model': 'gemma2-9b-it', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.1}}
+2025-07-23 06:42:22,274 - groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-07-23 06:42:22,275 - httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+2025-07-23 06:42:22,379 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f90612ce350>
+2025-07-23 06:42:22,379 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7f9061b94ef0> server_hostname='api.groq.com' timeout=None
+2025-07-23 06:42:22,395 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f90612ce410>
+2025-07-23 06:42:22,395 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-07-23 06:42:22,395 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-07-23 06:42:22,396 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-07-23 06:42:22,396 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-07-23 06:42:22,396 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-07-23 06:42:22,666 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Jul 2025 06:42:22 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'vary', b'Origin'), (b'x-groq-region', b'us-west-1'), (b'x-ratelimit-limit-requests', b'14400'), (b'x-ratelimit-limit-tokens', b'15000'), (b'x-ratelimit-remaining-requests', b'14399'), (b'x-ratelimit-remaining-tokens', b'14225'), (b'x-ratelimit-reset-requests', b'6s'), (b'x-ratelimit-reset-tokens', b'3.1s'), (b'x-request-id', b'req_01k0v09mk5fmq8rqk45612y3gz'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=G2jJ5gA.pKG7ZD75Cp3MtasmXJYC5cA9HMKlguxdSF4-1753252942-1.0.1.1-m5vrAawEV0KvL5iXJgC7E9hK7NBtOrzXBEcm0yW71F8FyjoYpFjYWg7D3RgLN5OHIEIbUgo3Kej8NhSxyVSRQO6kdl80E3Vbf4GHH2l2VFU; path=/; expires=Wed, 23-Jul-25 07:12:22 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'9639328a0baf7604-SEA'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-07-23 06:42:22,667 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:42:22,667 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-07-23 06:42:22,668 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-07-23 06:42:22,668 - httpcore.http11 - DEBUG - response_closed.started
+2025-07-23 06:42:22,668 - httpcore.http11 - DEBUG - response_closed.complete
+2025-07-23 06:42:22,668 - groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Wed, 23 Jul 2025 06:42:22 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin', 'x-groq-region': 'us-west-1', 'x-ratelimit-limit-requests': '14400', 'x-ratelimit-limit-tokens': '15000', 'x-ratelimit-remaining-requests': '14399', 'x-ratelimit-remaining-tokens': '14225', 'x-ratelimit-reset-requests': '6s', 'x-ratelimit-reset-tokens': '3.1s', 'x-request-id': 'req_01k0v09mk5fmq8rqk45612y3gz', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=G2jJ5gA.pKG7ZD75Cp3MtasmXJYC5cA9HMKlguxdSF4-1753252942-1.0.1.1-m5vrAawEV0KvL5iXJgC7E9hK7NBtOrzXBEcm0yW71F8FyjoYpFjYWg7D3RgLN5OHIEIbUgo3Kej8NhSxyVSRQO6kdl80E3Vbf4GHH2l2VFU; path=/; expires=Wed, 23-Jul-25 07:12:22 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None', 'server': 'cloudflare', 'cf-ray': '9639328a0baf7604-SEA', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-07-23 06:42:22,674 - app - INFO - Problem detection result: {'has_multiple_problems': False, 'needs_clarification': True, 'clarification_question': 'Can you please tell me what issue you are experiencing?', 'problems': [], 'separation_reasoning': "The user input 'hlo' is too vague to determine if it describes a single problem or multiple problems. ", 'original_message': 'hlo'}
+2025-07-23 06:42:22,674 - app - DEBUG - Clarification needed
+2025-07-23 06:42:22,674 - app - INFO - Sending response: {'type': 'clarification', 'content': 'Can you please tell me what issue you are experiencing?'}
+2025-07-23 06:42:29,975 - app - INFO - Received chat request: {'type': 'text', 'message': 'how to resold laptop'}
+2025-07-23 06:42:29,975 - app - DEBUG - Handling clarification response: how to resold laptop
+2025-07-23 06:42:29,975 - app - DEBUG - Combined message: hlo. how to resold laptop
+2025-07-23 06:42:29,978 - groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-74365725-ecee-4430-b5ca-a1bebef93f34', 'json_data': {'messages': [{'role': 'system', 'content': '\n            You are an expert in identifying no of problem in user input. Your task is to systematically separate multiple distinct technical problems from user messages.\n\n            **PROBLEM IDENTIFICATION :**\n            1. Count and separate clearly distinct issues affecting different systems, applications, or components.\n            2. Only separate if two or more issues have different root causes or contexts.\n            4. Separate only if Clearly Distinct: Separate problems only if they affect unrelated systems (e.g., "my printer is jammed and I can\'t access my email") or have clearly different symptoms and contexts.\n            5. If the user input clearly describes _one_ symptom (e.g. "my pc is slow", "printer won\'t print"), assume _one_ problem and do NOT ask any clarification question about that symptom.\n\n            **RULES**\n            1. Do NOT ask about the nature or details of a symptom — your job is ONLY to determine number of distinct problems, not to analyze what the problem is.\n            2. Treat simple, single-clause inputs (like "my pc not working", "email not opening", "printer is jammed") as a single, clearly defined problem. Do NOT request clarification in such cases.\n            3. Consolidate Symptoms: If one symptom is clearly a result of another (e.g. "The app crashes and I lose my work"), treat as a single problem.\n            4. Separate problems ONLY if they are clearly about different systems, components, or times (e.g., "My printer won\'t print AND my email won\'t open").\n            5. Ask for clarification *only* when you cannot determine if the described situation involves 1 or multiple issues — e.g., if the syntax is ambiguous or two clauses blur together.\n            6. Never ask for clarification based just on lack of technical detail in a single clause — this is out of scope.\n\n            If need to clarify, set "needs_clarification": true, leave "problems" empty, and provide a targeted question in "clarification_question". Otherwise, set "needs_clarification": false and proceed.\n\n            **ENHANCED RESPONSE FORMAT:**\n            {\n                "has_multiple_problems": true/false,\n                "needs_clarification": true/false,\n                "clarification_question": "A single, targeted question to resolve ambiguity." OR null,\n                "problems": [\n                    {\n                        "problem_text": "A clear, specific, and consolidated problem description.",\n                        "context": "All relevant context, symptoms, and conditions.",\n                        "problem_id": "problem_1/2/...",\n                        "current_user_message": "The part of the original message describing this consolidated problem."\n                    }\n                ],\n                "separation_reasoning": "A clear explanation of why problems were either separated or consolidated into one.",\n                "original_message": "The full original user message."\n            }\n            '}, {'role': 'user', 'content': 'User message: hlo. how to resold laptop\nConversation history: user: hlo\nassistant: Can you please tell me what issue you are experiencing?\nuser: how to resold laptop'}], 'model': 'gemma2-9b-it', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.1}}
+2025-07-23 06:42:29,979 - groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-07-23 06:42:29,979 - httpcore.connection - DEBUG - close.started
+2025-07-23 06:42:29,980 - httpcore.connection - DEBUG - close.complete
+2025-07-23 06:42:29,980 - httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+2025-07-23 06:42:30,016 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f90610d4f90>
+2025-07-23 06:42:30,016 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7f9061b94ef0> server_hostname='api.groq.com' timeout=None
+2025-07-23 06:42:30,028 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f90610d5010>
+2025-07-23 06:42:30,028 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-07-23 06:42:30,029 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-07-23 06:42:30,029 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-07-23 06:42:30,029 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-07-23 06:42:30,029 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-07-23 06:42:30,327 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Jul 2025 06:42:30 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'vary', b'Origin'), (b'x-groq-region', b'us-west-1'), (b'x-ratelimit-limit-requests', b'14400'), (b'x-ratelimit-limit-tokens', b'15000'), (b'x-ratelimit-remaining-requests', b'14399'), (b'x-ratelimit-remaining-tokens', b'14196'), (b'x-ratelimit-reset-requests', b'6s'), (b'x-ratelimit-reset-tokens', b'3.216s'), (b'x-request-id', b'req_01k0v09w16ekmtv6dxybhge3cd'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'CF-RAY', b'963932b9b8f4a3c5-SEA'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-07-23 06:42:30,328 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:42:30,328 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-07-23 06:42:30,329 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-07-23 06:42:30,329 - httpcore.http11 - DEBUG - response_closed.started
+2025-07-23 06:42:30,329 - httpcore.http11 - DEBUG - response_closed.complete
+2025-07-23 06:42:30,330 - groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Wed, 23 Jul 2025 06:42:30 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin', 'x-groq-region': 'us-west-1', 'x-ratelimit-limit-requests': '14400', 'x-ratelimit-limit-tokens': '15000', 'x-ratelimit-remaining-requests': '14399', 'x-ratelimit-remaining-tokens': '14196', 'x-ratelimit-reset-requests': '6s', 'x-ratelimit-reset-tokens': '3.216s', 'x-request-id': 'req_01k0v09w16ekmtv6dxybhge3cd', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'server': 'cloudflare', 'cf-ray': '963932b9b8f4a3c5-SEA', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-07-23 06:42:30,337 - app - INFO - Problem detection result: {'has_multiple_problems': False, 'needs_clarification': True, 'clarification_question': 'What issue are you having with your laptop? Are you trying to sell it, or is there a problem with it?', 'problems': [], 'separation_reasoning': "The user's message is ambiguous. It could mean they are having trouble selling their laptop or that there is a technical issue with it.", 'original_message': 'hlo. how to resold laptop'}
+2025-07-23 06:42:30,337 - app - DEBUG - No problems detected after clarification, created fallback problem
+2025-07-23 06:42:30,340 - groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-c5e84f2f-8d22-4f65-a2d1-fd649b730bf3', 'json_data': {'messages': [{'role': 'system', 'content': 'You are an expert technical support classifier. Analyze user messages and classify them into these categories:\n\n            1. **Hardware** - Physical device problems (screen, battery, keyboard, ports, overheating, won\'t turn on, fell and broke, physical damage)\n            2. **Software/OS** - Operating system, boot, driver, update issues (won\'t boot, Windows update failed, driver missing, system-wide software issues)\n            3. **Performance** - System or app slowness, resource usage, apps running slowly or poorly (computer slow, startup takes forever, app is slow, not responding well)\n            4. **App Crash** - Application crashes, freezes, error dialogs, won\'t start (specific app crashes, program hangs, error messages)\n            5. **System Crash** - System-wide crashes, BSOD, random reboots (blue screen, system freezes, computer shuts down)\n\n            **DIAGNOSTIC APPROACH:**\n            You must distinguish between:\n            - **Surface symptoms** vs **root causes**\n            - **App-specific** vs **system-wide** issues\n            - **Hardware** vs **software** problems\n            - **Performance slowness** vs **crash issues**\n\n            CRITICAL UNDERSTANDING:\n            - "App not working" could mean: Performance (slow/laggy), App Crash (won\'t start/crashes), or Software/OS (system-wide issue)\n            - "Computer won\'t start" could mean: Hardware (power/physical) OR Software/OS (boot failure)\n            - "Slow" typically means Performance, but could be Hardware (failing components) or Software/OS (malware/corruption)\n            - Only classify as "App Crash" if user mentions crashing, freezing, error messages, or won\'t start\n            - "Not working properly" often indicates Performance issues unless crash symptoms are described\n\n            ANALYSIS APPROACH:\n            1. Consider ALL possible interpretations of vague language\n            2. Ask targeted questions to distinguish between similar categories\n            3. Don\'t assume "not working" means "crashing" - could be performance\n            4. Use precise diagnostic questions based on symptoms\n\n            Respond with JSON in this exact format:\n            {\n                "classification": "final_category_or_null", \n                "confidence": 0.0_to_1.0,\n                "reasoning": "internal_step_by_step_analysis",\n                "need_question": true_or_false,\n                "question": "targeted_diagnostic_question_if_needed"\n            }\n\n            Decision Logic:\n            - If CLEARLY only 1 category possible (high confidence): Classify immediately\n            - If multiple interpretations possible: Set needs_question=true and ask to differentiate\n            - Focus on what the user ACTUALLY said, not assumptions about what they meant'}, {'role': 'user', 'content': 'Problem to classify: hlo. how to resold laptop\n Conversation: user: hlo\nassistant: Can you please tell me what issue you are experiencing?\nuser: how to resold laptop'}], 'model': 'llama3-70b-8192', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.1}}
+2025-07-23 06:42:30,341 - groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+2025-07-23 06:42:30,342 - httpcore.connection - DEBUG - close.started
+2025-07-23 06:42:30,342 - httpcore.connection - DEBUG - close.complete
+2025-07-23 06:42:30,342 - httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+2025-07-23 06:42:30,351 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f90610e0910>
+2025-07-23 06:42:30,351 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7f9061c7ee70> server_hostname='api.groq.com' timeout=None
+2025-07-23 06:42:30,362 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f90610e0950>
+2025-07-23 06:42:30,362 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-07-23 06:42:30,362 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-07-23 06:42:30,362 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-07-23 06:42:30,363 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-07-23 06:42:30,363 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-07-23 06:42:30,991 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 23 Jul 2025 06:42:30 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'vary', b'Origin'), (b'x-groq-region', b'us-west-1'), (b'x-ratelimit-limit-requests', b'14400'), (b'x-ratelimit-limit-tokens', b'6000'), (b'x-ratelimit-remaining-requests', b'14399'), (b'x-ratelimit-remaining-tokens', b'5248'), (b'x-ratelimit-reset-requests', b'6s'), (b'x-ratelimit-reset-tokens', b'7.52s'), (b'x-request-id', b'req_01k0v09wbvfmr8ehvacp7qenxt'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'CF-RAY', b'963932bbcaa75580-SEA'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-07-23 06:42:30,991 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:42:30,991 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-07-23 06:42:30,992 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-07-23 06:42:30,992 - httpcore.http11 - DEBUG - response_closed.started
+2025-07-23 06:42:30,992 - httpcore.http11 - DEBUG - response_closed.complete
+2025-07-23 06:42:30,992 - groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Wed, 23 Jul 2025 06:42:30 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'vary': 'Origin', 'x-groq-region': 'us-west-1', 'x-ratelimit-limit-requests': '14400', 'x-ratelimit-limit-tokens': '6000', 'x-ratelimit-remaining-requests': '14399', 'x-ratelimit-remaining-tokens': '5248', 'x-ratelimit-reset-requests': '6s', 'x-ratelimit-reset-tokens': '7.52s', 'x-request-id': 'req_01k0v09wbvfmr8ehvacp7qenxt', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'server': 'cloudflare', 'cf-ray': '963932bbcaa75580-SEA', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-07-23 06:42:30,994 - app - INFO - Classification result: {'classification': None, 'confidence': 0.0, 'reasoning': "User's message is unclear and doesn't describe a technical issue. The initial message 'hlo' seems like a greeting, and the second message 'how to resold laptop' is unrelated to technical support. It appears to be a question about selling a laptop, which is out of scope for technical support.", 'need_question': True, 'question': "Are you experiencing any technical issues with your laptop that you'd like help with?"}
+2025-07-23 06:42:30,994 - app - INFO - Sending response: {'type': 'question', 'content': "Are you experiencing any technical issues with your laptop that you'd like help with?"}
+2025-07-23 06:47:18,617 - app - INFO - Conversation state reset.
+2025-07-23 06:47:23,207 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:47:23,225 - app - ERROR - Error processing request: "Input to ChatPromptTemplate is missing variables {'conversation_history2'}.  Expected: ['conversation_history2', 'user_message'] Received: ['user_message']\nNote: if you intended {conversation_history2} to be part of the string and not a variable, please escape it with double curly braces like: '{{conversation_history2}}'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT "
+Traceback (most recent call last):
+  File "/home/runner/workspace/app.py", line 370, in handle_message
+    return self._process_problem_report(user_message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/app.py", line 385, in _process_problem_report
+    problem_detection = self.classifier.detect_problems(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/app.py", line 304, in detect_problems
+    return self.problem_detection_chain.invoke({
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 3044, in invoke
+    input_ = context.run(step.invoke, input_, config, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/langchain_core/prompts/base.py", line 216, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 1939, in _call_with_config
+    context.run(
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/langchain_core/runnables/config.py", line 429, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/langchain_core/prompts/base.py", line 189, in _format_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/langchain_core/prompts/base.py", line 183, in _validate_input
+    raise KeyError(
+KeyError: "Input to ChatPromptTemplate is missing variables {'conversation_history2'}.  Expected: ['conversation_history2', 'user_message'] Received: ['user_message']\nNote: if you intended {conversation_history2} to be part of the string and not a variable, please escape it with double curly braces like: '{{conversation_history2}}'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT "
+2025-07-23 06:49:10,291 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:49:10,638 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:49:18,318 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:49:19,780 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:49:22,804 - app - INFO - Conversation state reset.
+2025-07-23 06:49:27,671 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:49:28,081 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:49:28,600 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:49:34,518 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:49:37,387 - app - INFO - Conversation state reset.
+2025-07-23 06:50:04,183 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:50:04,821 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:50:08,912 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:50:17,165 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:50:17,895 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:50:47,843 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:54:55,718 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:54:56,393 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:54:59,497 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:55:30,422 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:55:30,956 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:55:45,839 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 06:55:51,409 - app - INFO - Conversation state reset.
+2025-07-23 07:43:29,194 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 07:43:29,831 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 07:43:33,535 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 07:43:58,571 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 07:43:59,121 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 07:44:18,421 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 07:59:02,820 - app - INFO - Conversation state reset.
+2025-07-23 07:59:05,674 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 07:59:06,078 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 07:59:08,107 - app - INFO - Conversation state reset.
+2025-07-23 08:33:42,365 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:33:42,689 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:33:56,672 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:33:58,831 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:35:42,854 - app - INFO - Conversation state reset.
+2025-07-23 08:35:58,156 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:35:58,768 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:36:02,248 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:36:08,339 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:36:08,984 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:36:24,035 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:36:53,852 - app - INFO - Conversation state reset.
+2025-07-23 08:45:30,355 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:45:30,799 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:45:31,254 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:45:33,473 - app - INFO - Conversation state reset.
+2025-07-23 08:45:46,972 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:45:47,584 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:45:48,268 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:48:28,513 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:48:29,067 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:48:29,570 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:48:32,646 - app - INFO - Conversation state reset.
+2025-07-23 08:48:46,554 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:48:47,130 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:51:24,087 - app - INFO - Conversation state reset.
+2025-07-23 08:51:24,617 - app - INFO - Conversation state reset.
+2025-07-23 08:51:35,119 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:51:35,622 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:51:58,815 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:51:59,323 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:52:07,766 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:52:08,349 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:53:05,480 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:53:06,026 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:53:27,542 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:54:46,116 - app - INFO - Conversation state reset.
+2025-07-23 08:54:46,747 - app - INFO - Conversation state reset.
+2025-07-23 08:54:47,024 - app - INFO - Conversation state reset.
+2025-07-23 08:56:07,450 - app - INFO - Conversation state reset.
+2025-07-23 08:56:10,121 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:56:10,705 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 08:56:11,289 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:03:08,497 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:03:09,228 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:09:29,006 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:09:29,712 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:09:36,937 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:09:37,367 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:09:54,234 - app - INFO - Conversation state reset.
+2025-07-23 09:10:00,563 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:00,990 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:01,589 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:07,738 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:09,674 - app - INFO - Conversation state reset.
+2025-07-23 09:10:29,834 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:30,481 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:35,101 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:47,882 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:48,525 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:54,553 - app - INFO - Conversation state reset.
+2025-07-23 09:10:57,438 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:57,790 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:10:58,176 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:11:01,965 - app - INFO - Conversation state reset.
+2025-07-23 09:14:12,983 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:14:13,636 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:14:16,992 - app - INFO - Conversation state reset.
+2025-07-23 09:15:54,437 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:15:55,088 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:16:05,189 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:16:27,553 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:16:28,232 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:17:58,752 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:18:02,471 - app - INFO - Conversation state reset.
+2025-07-23 09:18:22,058 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:18:22,709 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:19:08,287 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 09:19:08,690 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 15:14:42,851 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.56.137:5000
+2025-07-23 15:14:42,852 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 15:14:42,856 - werkzeug - INFO -  * Restarting with stat
+2025-07-23 15:14:48,806 - werkzeug - WARNING -  * Debugger is active!
+2025-07-23 15:14:48,810 - werkzeug - INFO -  * Debugger PIN: 340-365-264
+2025-07-23 15:14:48,891 - werkzeug - INFO - 127.0.0.1 - - [23/Jul/2025 15:14:48] "GET / HTTP/1.1" 200 -
+2025-07-23 15:14:49,041 - werkzeug - INFO - 127.0.0.1 - - [23/Jul/2025 15:14:49] "GET /static/style.css HTTP/1.1" 200 -
+2025-07-23 15:14:49,045 - werkzeug - INFO - 127.0.0.1 - - [23/Jul/2025 15:14:49] "GET /static/script.js?v=2 HTTP/1.1" 200 -
+2025-07-23 15:14:53,963 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-07-23 15:14:53,966 - app - ERROR - Error processing request: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "c:\aniket\code\building\ulala\app.py", line 344, in handle_message
+    request_type = self.classifier.detect_request_type(user_message)
+  File "c:\aniket\code\building\ulala\app.py", line 291, in detect_request_type
+    return self.procedure_chain.invoke({"user_message": user_message})
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aniket\code\agentenvi\Lib\site-packages\langchain_core\runnables\base.py", line 3047, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "C:\aniket\code\agentenvi\Lib\site-packages\langchain_core\language_models\chat_models.py", line 378, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "C:\aniket\code\agentenvi\Lib\site-packages\langchain_core\language_models\chat_models.py", line 963, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aniket\code\agentenvi\Lib\site-packages\langchain_core\language_models\chat_models.py", line 782, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\aniket\code\agentenvi\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1028, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\aniket\code\agentenvi\Lib\site-packages\langchain_groq\chat_models.py", line 504, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+  File "C:\aniket\code\agentenvi\Lib\site-packages\groq\resources\chat\completions.py", line 368, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/openai/v1/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<40 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\aniket\code\agentenvi\Lib\site-packages\groq\_base_client.py", line 1232, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\aniket\code\agentenvi\Lib\site-packages\groq\_base_client.py", line 1034, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.AuthenticationError: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-07-23 15:14:54,259 - werkzeug - INFO - 127.0.0.1 - - [23/Jul/2025 15:14:54] "POST /chat HTTP/1.1" 200 -
+2025-07-23 15:15:42,002 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.56.137:5000
+2025-07-23 15:15:42,003 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-23 15:15:42,009 - werkzeug - INFO -  * Restarting with stat
+2025-07-23 15:15:46,654 - werkzeug - WARNING -  * Debugger is active!
+2025-07-23 15:15:46,658 - werkzeug - INFO -  * Debugger PIN: 340-365-264
+2025-07-23 15:15:47,003 - werkzeug - INFO - 127.0.0.1 - - [23/Jul/2025 15:15:47] "GET / HTTP/1.1" 200 -
+2025-07-23 15:15:47,181 - werkzeug - INFO - 127.0.0.1 - - [23/Jul/2025 15:15:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-07-23 15:15:47,185 - werkzeug - INFO - 127.0.0.1 - - [23/Jul/2025 15:15:47] "[36mGET /static/script.js?v=2 HTTP/1.1[0m" 304 -
+2025-07-23 15:15:55,442 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 15:15:56,586 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-23 15:15:56,614 - werkzeug - INFO - 127.0.0.1 - - [23/Jul/2025 15:15:56] "POST /chat HTTP/1.1" 200 -

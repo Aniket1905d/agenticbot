@@ -1,0 +1,14 @@
+Flask
+Werkzeug
+
+langchain
+langchain-groq
+langchain-core
+
+
+requests
+
+python-dotenv
+
+pytest
+pytest-flask

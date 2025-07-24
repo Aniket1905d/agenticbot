@@ -246,7 +246,7 @@ class TechnicalSupportClassifier:
 
         return ChatGroq(
             model_name=self.model_name,
-            temperature=0.9,
+            temperature=0.1,
             api_key=groq_api_key
         )
     def _initialize_llm1(self) -> ChatGroq:
